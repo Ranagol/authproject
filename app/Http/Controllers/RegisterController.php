@@ -11,24 +11,27 @@ class RegisterController extends Controller
         return view('register.create');
     }
 
-    public function store(){
+    public function store(){//ovde registrujemo usera u db
         \Log::info(request());//ovo ce ispisati sve sto se nalazi u requestu
-        $this->validate(request(), [
+        
+        $this->validate(request(), [//OVDE RADIMO VALIDACIJU
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:6'
         ]);
+
+
         \Log::info('test');//ovo ce ispisati test u logu
 
         $user = new User;
         $user->name = request('name');
         $user->email = request('email');
-        $user->password = request('password');
+        $user->password = bcrypt(request('password'));//ovo radi bajkriptovanje, da kriptuje password koji se skladisti u db
         $user->save();
         \Log::info($user);//ovo ce zapisati sve podatke usera u log, ako se stigne dovde
         auth()->login($user);
         \Log::info($user);//ovo ce zapisati sve podatke usera u log, ako se stigne dovde
         return redirect('/home');
-        //upises log kod. Otvoris log. Obrisati sve iz njega. Refres stranice. Ubaciti podatke. Submit. Pogledaj log. 
+        //upises log kod u kontroller. Otvoris log (storage/logs/laravel.log). Obrisati sve iz njega, nista ove nama ne treba, ovo su samo log zapisi. Refres web stranice. Ubaciti podatke u formu. Submit. Pogledaj log. 
     }
 }

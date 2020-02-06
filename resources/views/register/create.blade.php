@@ -10,7 +10,7 @@
 <body>
   <div class="container">
     <h2>Create blade</h2>
-
+  <!--OVO JE FORMA ZA SLANJE REGISTROVANIH PODATAKA -->
   <form method="POST" action="/register">
     @csrf
     <div class="form-group">
