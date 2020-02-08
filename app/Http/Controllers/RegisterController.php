@@ -21,7 +21,7 @@ class RegisterController extends Controller
         ]);
 
 
-        \Log::info('test');//ovo ce ispisati test u logu
+        \Log::info('test');//ovo ce ispisati test u logu, cisto samo da vidimo da li smo stigli do ove linije
 
         $user = new User;
         $user->name = request('name');

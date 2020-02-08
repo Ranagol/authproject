@@ -1,21 +1,8 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome');//for this page the user doesn't need authentication. Login link on this page will get us to the login form. /register url will get us to the form the register.
 });
-
-
 
 Route::get('/register', 'RegisterController@create');//dovodi do forme za registrovanje
 
@@ -28,7 +15,4 @@ Route::post('/login', 'LoginController@store');//ovo salje podatke iz login blad
 
 Route::get('/logout', 'LoginController@destroy');//koristimo get metod, jer je jednostavno. Ne saljemo podatke. Get je ovde brzi od post. 
 
-/*
-svaki post treba da ima user_id, sto dobijamo od auth()->id. Odraditi komplet relationship.
-odraditi rucno login logout register
-*/
+

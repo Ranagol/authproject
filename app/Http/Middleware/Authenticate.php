@@ -15,7 +15,7 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
-            return route('login');
+            return route('login');//ovo ovde je nejmovana ruta, ovo je samo string, i zbog toga ovo nece raditi. Resenje> ili nejmujemo rutu, ili ovo promenimo na return redirect('/login');
         }
     }
 }
